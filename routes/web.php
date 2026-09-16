@@ -64,3 +64,31 @@ Route::prefix('kasir')->group(function () {
         return 'Halaman Input Transaksi Penjualan (Kasir)';
     })->name('kasir.transaksi');
 });
+
+
+Route::get('/produk-toko', function () {
+    $produk = [
+        [
+            'nama' => 'Beras',
+            'sku' => 'BR001',
+            'harga' => 75000,
+            'gambar' => 'https://www.pastisania.com/storage/app/media/Product%20Images/beras-premium-sania-10-kg.webp',
+            'stok' => 20
+        ],
+        [
+            'nama' => 'Minyak Goreng',
+            'sku' => 'MG001',
+            'harga' => 18000,
+            'gambar' => 'https://cdn.bormadago.com/media/images/products/2021/06/5444a.jpg',
+            'stok' => 30
+        ],
+        [
+            'nama' => 'Gula',
+            'sku' => 'GL001',
+            'harga' => 16000,
+            'gambar' => 'https://cdn.bormadago.com/media/images/products/2021/11/DSC_0569.JPG',
+            'stok' => 25
+        ]
+    ];
+    return view('daftar_produk', compact('produk'));
+});
