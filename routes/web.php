@@ -1,14 +1,58 @@
 <?php
 
-// use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\UmumController;
-// use App\Http\Controllers\LoginController;
-// use App\Http\Middleware\RoleMiddleware;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UmumController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\RoleMiddleware;
+use App\Http\Controllers\QueryBuilderController;
+use App\Http\Controllers\EloquentController;
 
-// Route::get('', function () {
-//     return redirect('/login');
-// });
+
+Route::get('', function () {
+    return redirect('/login');
+});
+
+Route::get('/query-builder/insert', [QueryBuilderController::class, 'insert']);
+Route::get('/query-builder/user', [QueryBuilderController::class, 'getUser']);
+Route::get('/query-builder/select', [QueryBuilderController::class, 'selectData']);
+Route::get('/query-builder/multiple-where', [QueryBuilderController::class, 'multipleWhere']);
+Route::get('/query-builder/update', [QueryBuilderController::class, 'updateData']);
+Route::get('/query-builder/increment', [QueryBuilderController::class, 'incrementData']);
+Route::get('/query-builder/decrement', [QueryBuilderController::class, 'decrementData']);
+Route::get('/query-builder/delete', [QueryBuilderController::class, 'deleteData']);
+Route::get('/query-builder/pluck', [QueryBuilderController::class, 'pluckName']);
+Route::get('/query-builder/pluck-email-name', [QueryBuilderController::class, 'pluckEmailName']);
+Route::get('/query-builder/count', [QueryBuilderController::class, 'countData']);
+Route::get('/query-builder/sum', [QueryBuilderController::class, 'sumPoints']);
+Route::get('/query-builder/avg', [QueryBuilderController::class, 'averagePoints']);
+Route::get('/query-builder/max', [QueryBuilderController::class, 'maxPoints']);
+Route::get('/query-builder/min', [QueryBuilderController::class, 'minPoints']);
+Route::get('/query-builder/limit', [QueryBuilderController::class, 'limitData']);
+Route::get('/query-builder/subquery', [QueryBuilderController::class, 'subqueryData']);
+Route::get('/query-builder/selectraw', [QueryBuilderController::class, 'selectRawData']);
+
+Route::get('/eloquent/insert', [EloquentController::class, 'createData']);
+Route::get('/eloquent/save', [EloquentController::class, 'saveData']);
+Route::get('/eloquent/all', [EloquentController::class, 'getAllData']);
+Route::get('/eloquent/id', [EloquentController::class, 'getById']);
+Route::get('/eloquent/email', [EloquentController::class, 'getByEmail']);
+Route::get('/eloquent/firstOrFail', [EloquentController::class, 'getFirstOrFail']);
+Route::get('/eloquent/update', [EloquentController::class, 'updateData']);
+Route::get('/eloquent/update-save', [EloquentController::class, 'updateWithSave']);
+Route::get('eloquent/delete', [EloquentController::class, 'deleteData']);
+Route::get('eloquent/destroy', [EloquentController::class, 'destroyData']);
+Route::get('/eloquent/where', [EloquentController::class, 'whereData']);
+Route::get('/eloquent/or-where', [EloquentController::class, 'orWhereData']);
+Route::get('/eloquent/where-between', [EloquentController::class, 'whereBetweenData']);
+
+Route::get('/eloquent/category-products', [EloquentController::class, 'categoryProducts']);
+Route::get('/eloquent/mutator', [EloquentController::class, 'mutatorData']);
+Route::get('/eloquent/accessor', [EloquentController::class, 'accessorData']);
+
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.process');
+Route::post('/submit', [LoginController::class, 'submit']);
 
 
 // Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
@@ -93,7 +137,7 @@
 //     return view('daftar_produk', compact('produk'));
 // });
 
-use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\LaporanPenjualanController;
 use App\Http\Controllers\ProductController;
