@@ -29,16 +29,12 @@ class User extends Authenticatable
         return $query->where('role', 'admin');
     }
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
 
     public function getUpperNameAttribute()
     {
         return strtoupper($this->name);
     }
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *
