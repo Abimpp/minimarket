@@ -34,3 +34,18 @@
         </div>
     </body>
 </html>
+<script>
+    @if(auth()->check())
+        window.Echo.private('user.{{ auth()->id() }}')
+            .listen('.order.placed', (e) => {
+                alert(`Order #${e.order_id} telah ditempatkan! Total: Rp ${e.total}`);
+                console.log('Order Placed:', e);
+            });
+    @else
+        window.Echo.channel('orders')
+            .listen('.order.placed', (e) => {
+                alert(`Order #${e.order_id} telah ditempatkan! Total: Rp ${e.total}`);
+                console.log('Order Placed:', e);
+            });
+    @endif
+</script>

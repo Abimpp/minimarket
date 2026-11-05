@@ -70,3 +70,15 @@ Route::get('/latihan20', function () {
 
     return view('latihan20', compact('pesanan'));
 });
+
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ChatController;
+
+Route::post('/orders', [OrderController::class, 'store']);
+Route::get('/test-order', function () {
+    return view('test-order');
+});
+
+Route::get('/chat', [ChatController::class, 'index']);
+Route::post('/chat', [ChatController::class, 'store']);
+Route::post('/chat/clear', [ChatController::class, 'clear']);
